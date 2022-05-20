@@ -1,0 +1,3 @@
+Hello {{user.username}}
+Welcome to the BLOG
+Your application has been received

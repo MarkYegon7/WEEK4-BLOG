@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{%import "bootstrap/wtf.html" as wtf%}
+
+<!-- Navbar block  -->
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div  class='container' id="typeblog">
+  <h1 style="margin: 5%; text-align: center;color:rgb(5, 44, 102);">Write a blog...</h1>
+  <div class="col-md-6">
+  </div>
+      <div class="col-md-6">
+          <div class="panel panel-default">
+              <div class="panel-body">
+                  {{wtf.quick_form(form)}}
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %} 
+
