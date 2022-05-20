@@ -23,6 +23,10 @@ def test():
 def make_shell_context():
     return dict(app = app,db = db,User =User)
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
 
 if __name__ == '__main__':
     manager.run() 
