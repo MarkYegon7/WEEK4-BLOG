@@ -8,7 +8,7 @@ class Config:
     QUOTE_URL = "http://quotes.stormconsultancy.co.uk/random.json"
 
     EMAIL = "tomwere9@gmail.com"
-    PASSWORD = "tom97?"
+    PASSWORD = "tom97"
   
 class TestConfig(Config):
     pass
