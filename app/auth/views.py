@@ -17,10 +17,10 @@ def register():
     if form.validate_on_submit():
         user = User(email = form.email.data, username = form.username.data,password = form.password.data)
       
-        db.session(user)
+        db.session()
         db.session.commit()
 
-        mail_message("Welcome to the BLOG","email/welcome",user.email,user=user)
+        # mail_message("Welcome to the BLOG","email/welcome",user.email)
 
         return redirect(url_for('auth.login'))
         
@@ -43,8 +43,8 @@ def login():
     title = 'Login'
     return render_template('auth/login.html',form=form,title=title)
 
-@auth.route('/logout')
 @login_required
+@auth.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('main.index'))

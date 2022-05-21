@@ -56,10 +56,10 @@ class User(UserMixin,db.Model):
 class Blog(db.Model):
     __tablename__ = 'blogs'
     id = db.Column(db.Integer,primary_key=True)
+    #user_id = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
     title = db.Column(db.String(255),index = True)
     description = db.Column(db.String(255),index = True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
 
 class Comment(db.Model):
     __tablename__ = 'comments'
@@ -69,15 +69,15 @@ class Comment(db.Model):
     blog_id = db.Column(db.Integer,db.ForeignKey("blogs.id"))
 
 
-class Role(db.Model):
-    __tablename__ = 'roles'
-    id = db.Column(db.Integer,primary_key = True)
-    name = db.Column(db.String(255))
-    users = db.relationship('User',backref = 'role',lazy="dynamic")
-    pass_secure = db.Column(db.String(255))
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
-    blog_id = db.Column(db.Integer,db.ForeignKey("blogs.id"))
-    comments_id = db.Column(db.Integer,db.ForeignKey("comments.id"))
+# class Role(db.Model):
+#     __tablename__ = 'roles'
+#     id = db.Column(db.Integer,primary_key = True)
+#     name = db.Column(db.String(255))
+#     users = db.relationship('User',backref = 'role',lazy="dynamic")
+#     pass_secure = db.Column(db.String(255))
+#     user_id = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
+#     blog_id = db.Column(db.Integer,db.ForeignKey("blogs.id"))
+#     comments_id = db.Column(db.Integer,db.ForeignKey("comments.id"))
 
     def __repr__(self):
         return f'User {self.name}'
