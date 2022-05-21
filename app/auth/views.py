@@ -11,7 +11,7 @@ from werkzeug.security import generate_password_hash,check_password_hash
 
 
 
-@auth.route('/register')
+@auth.route('/register',methods =['GET','POST'])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -29,7 +29,7 @@ def register():
     return render_template('auth/register.html',form = form)
 
 
-@auth.route('/login')
+@auth.route('/login',methods =['GET','POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
