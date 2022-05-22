@@ -28,7 +28,7 @@ class ProdConfig(Config):
     '''
     
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql://zgasjjhfqlsucn:1e3faa258e9d83eb6952ae9a90a5792812e2c22f5ff8b112d9ef4ea1bc39e521@ec2-54-165-184-219.compute-1.amazonaws.com:5432/dfe0f4c4hgqn5h'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://pguwimdgtaimag:cd6c3a9e84fad2cb2cf2b19678d08d290ccacedd2001eba637a75ef2ae2786da@ec2-34-231-177-125.compute-1.amazonaws.com:5432/d8jt5mpu635vfd'
     
 
 class DevConfig(Config):
