@@ -27,7 +27,7 @@ class ProdConfig(Config):
     MAIL_USERNAME = "tomwere9@gmail.com"
     MAIL_PASSWORD ="svsss"
 
-    SQLALCHEMY_DATABASE_URI = 'postgres://zgasjjhfqlsucn:1e3faa258e9d83eb6952ae9a90a5792812e2c22f5ff8b112d9ef4ea1bc39e521@ec2-54-165-184-219.compute-1.amazonaws.com:5432/dfe0f4c4hgqn5h'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://zgasjjhfqlsucn:1e3faa258e9d83eb6952ae9a90a5792812e2c22f5ff8b112d9ef4ea1bc39e521@ec2-54-165-184-219.compute-1.amazonaws.com:5432/dfe0f4c4hgqn5h'
     
 
 class DevConfig(Config):

@@ -3,9 +3,9 @@ from wtforms import StringField,SubmitField,BooleanField,TextAreaField
 from wtforms.validators import InputRequired
 
 
-class UpdateForm(FlaskForm):
-    bio = StringField('bio',validators=[InputRequired()])
-    submit = SubmitField('submit')
+# class UpdateForm(FlaskForm):
+#     bio = StringField('bio',validators=[InputRequired()])
+#     submit = SubmitField('submit')
 
 class BlogForm(FlaskForm):
     title = StringField('title',validators=[InputRequired()])

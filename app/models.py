@@ -13,8 +13,8 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(255),unique = True,index = True)
     password = db.Column(db.String(255))
     bio = db.Column(db.String(255))
-    blogs = db.relationship('Blog',backref = 'user',lazy = True)
-    comments = db.relationship('Comment',backref = 'user',lazy = True)
+    blogs = db.relationship('Blog',backref = 'user',lazy = 'dynamic')
+    comments = db.relationship('Comment',backref = 'user',lazy = 'dynamic')
   
 
     @login_manager.user_loader
@@ -59,7 +59,13 @@ class Blog(db.Model):
     #user_id = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
     title = db.Column(db.String(255),index = True)
     description = db.Column(db.String(255),index = True)
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
+    #user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    
+
+    def __repr__(self):
+        return f"Blog('{self.id}', '{self.title}', '{self.description}')"
+
 
 class Comment(db.Model):
     __tablename__ = 'comments'

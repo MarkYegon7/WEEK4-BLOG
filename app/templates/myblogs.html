@@ -14,15 +14,16 @@
               <div class="panel-body">
                   <p>{{blog.description}}</p>
                   <p class="text-right text-muted"> <b>~ {{blog.user.username}} ~</b></p>
+                  <a href="{{url_for('main.delete', id=blog.id)}}" class="btn btn-danger">delete</a>
               </div>
-              <div class="panel-footer">
+              <!-- <div class="panel-footer">
                   
                   <a href="{{url_for('main.view', id=blog.id)}}"><i class="fas fa-comment fa-fw"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
                   {% if blog.user == current_user%}
                   <a href="{{url_for('main.delete', id=blog.id)}}"><i class="fas fa-trash-alt fa-fw"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
                   <a href="{{url_for('main.update_blog', id=blog.id)}}"><i class="fas fa-marker fa-fw"></i></a>
                   {% endif %}
-              </div>
+              </div> -->
           </div>
         </div>
         {%endfor%}

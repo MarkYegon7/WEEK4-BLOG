@@ -43,6 +43,8 @@ def login():
     title = 'Login'
     return render_template('auth/login.html',form=form,title=title)
 
+
+
 @login_required
 @auth.route('/logout')
 def logout():

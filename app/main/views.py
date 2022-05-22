@@ -4,7 +4,7 @@ from flask_login import login_required,current_user
 from . import main
 from ..request import get_quote
 from ..models import User,Blog,Comment
-from .forms import UpdateForm,BlogForm,CommentForm
+from .forms import BlogForm,CommentForm
 from ..email import mail_message
 from .. import db
 
@@ -27,9 +27,10 @@ def blogs():
         
         new_blog = Blog(title=form.title.data, description=form.description.data)
         #new_blog = Blog(title=title, description=description, user=current_user)
+        
         db.session.add(new_blog)
         db.session.commit()
-        return redirect(url_for('main.theblog'))
+        return redirect(url_for('main.blogs'))
     title = 'Blog'
     return render_template('blogs.html', title=title, form=form)
 
@@ -66,7 +67,7 @@ def view(id):
     blog_comments = Comment.query.filter_by(blog_id=id).all()
     comment_form = CommentForm()
     if comment_form.validate_on_submit():
-        new_comment = Comment(blog_id=id, comment=comment_form.comment.data, user=current_user)
+        new_comment = Comment(blog_id=id, comment=comment_form.comment.data)
         new_comment.save_comment()
     return render_template('view.html', blog=blog, blog_comments=blog_comments, comment_form=comment_form)
 
@@ -75,13 +76,12 @@ def view(id):
 @main.route('/delete/<int:id>', methods=['GET', 'POST'])
 
 def delete(id):
-    blog = Blog.query.get_or_404(id)
-    if blog.user != current_user:
-        abort(403)
+    blog = Blog.query.filter_by(id=id).first()
+    
     db.session.delete(blog)
     db.session.commit()
 
-    return redirect(url_for('.theblog'))
+    return redirect(url_for('main.theblog'))
 
 @main.route('/delete_comment/<int:comment_id>', methods=['GET', 'POST'])
 
